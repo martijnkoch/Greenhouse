@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app">
+  <div id="app" class="wrapper">
     <SidebarComponent></SidebarComponent>
     <router-view></router-view>
   </div>
@@ -18,4 +18,9 @@ export default {
 </script>
 
 <style>
+.wrapper {
+  display: flex;
+  width: 100%;
+  background-color: #FCFCFC;
+}
 </style>
