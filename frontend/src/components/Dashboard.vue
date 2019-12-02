@@ -6,22 +6,38 @@
 />
     <b-row class="top-row">
         <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5">
-
-            <b-input-group class="mt-4 searchbar mb-5">
-                <b-form-input placeholder="Search"></b-form-input>
-                <button class="btn btn-outline-secondary border-left-0 border searchbutton" type="button">
-                    <font-awesome-icon icon="search" :style="{ color: '#580D89' }"/>
-                </button>
-            </b-input-group>
-
+            <SearchbarComponentWhite></SearchbarComponentWhite>
             <h1>Popular games</h1>
+            <div class="d-flex">
+            
+                <b-card
+                title="Fifa 20"
+                img-src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-20/images/2019/07/fifa20-navtile-16x9-standardedition.png"
+                img-alt="Image"
+                img-top
+                style="max-width: 20rem;"
+                class="mb-2 default-card hvr-grow col-lg-12 col-md-12 col-sm-12 mr-5"
+                >
+                    <div class="row card-content">
+                        <div class="lg-6">
+                        <b-card-text> 6 ads available </b-card-text>
+                        </div>
+                        <div class="lg-6">
+                        <router-link to="/gamedetail">
+                            <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
+                        </router-link>
+                        </div>
+                    </div>
+                </b-card>
+           
+
             <b-card
             title="Fifa 20"
-            img-src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-20/images/2019/07/fifa20-navtile-16x9-standardedition.png"
+            img-src="https://helden-des-lichts.com/index.php?media/7-lol-banner-jpg/&thumbnail=large"
             img-alt="Image"
             img-top
             style="max-width: 20rem;"
-            class="mb-2 default-card hvr-grow"
+            class="mb-2 default-card hvr-grow col-lg-12 col-md-12 col-sm-12 mr-5"
             >
                 <div class="row card-content">
                     <div class="lg-6">
@@ -32,17 +48,40 @@
                     </div>
                 </div>
             </b-card>
+           </div>
          </b-col>
     </b-row>
 
+    <b-row>
+        <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5">
+
+            <h1>Guides</h1>
+            <b-card
+            title="Touchportal Guide"
+            img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
+            img-alt="Image"
+            img-top
+            style="max-width: 20rem;"
+            class="mb-2 default-card hvr-grow"
+            >
+                <div class="row card-content">
+                    <div class="offset-lg-4 lg-6 guide-button">
+                    <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
+                    </div>
+                </div>
+            </b-card>
+         </b-col>
+    </b-row>
 </div>
 </template>
 
 <script>
+import SearchbarComponentWhite from './SearchbarComponentWhite.vue'
+
 export default {
   name: 'app',
   components: {
-    
+    'SearchbarComponentWhite': SearchbarComponentWhite
   }
 }
 </script>
@@ -70,6 +109,7 @@ export default {
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16);
      img {
          border-radius: 25px 25px 0px 0px;
+         height: 160px;
      }
      .card-content {
          padding-left: 1.25rem;
@@ -81,8 +121,8 @@ export default {
             background-color: $gh-purple;
             border-color: $gh-purple;
             font-weight: 500;
-            margin-top: -15px;
-            font-size: 12pt;
+            margin-top: 0px;
+            font-size: 10pt;
              
          }
          button:hover{
@@ -98,30 +138,13 @@ export default {
          color: $gh-purple;
          font-size: 13pt;
          font-weight: 500;
+         margin-top: 10px;
      }
  }
- .searchbar {
-     width: 320px !important;
+ .guide-button {
+     button {
+        margin-right: 25px !important;
+     }
      
-     input {
-        border-radius: 50px;
-        border-color: $white;
-        background-image: url('/assets/img/search.png');
-        background-repeat: no-repeat;
-        background-position: right;
-
-     }
-     input::placeholder{
-        color: $gh-purple;
-        font-size: 12pt;
-     }
-     .searchbutton {
-        border-radius: 0px 50px 50px 0px; 
-        background-color: $white;
-        border: $white !important;
-     }
-     .searchbutton:hover{
-        background-color: $white !important;
-     }
  }
 </style>

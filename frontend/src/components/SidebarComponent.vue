@@ -53,41 +53,35 @@ export default {
     -moz-box-shadow: 3px 0px 12px -2px rgba(0,0,0,0.20);
     box-shadow: 3px 0px 12px -2px rgba(0,0,0,0.20);
     z-index: 1;
-}
-
-#sidebar .sidebar-header {
-    padding: 30px;
-    padding-left: 10px;
-    padding-top: 60px;
-    img {
-        margin-left: 3.2rem !important;
+    .sidebar-header {
+        padding: 30px;
+        padding-left: 10px;
+        padding-top: 60px;
+        img {
+            margin-left: 3.2rem !important;
+        }
     }
-}
-
-#sidebar ul {
-    padding-top: 50px;
-}
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
-}
-
-#sidebar ul li a {
-    padding-bottom: 28px;
-    font-size: 12pt;
-    display: block;
-    color: $white;
-    text-align: left;
-    margin-left: 30px;
-    opacity: 0.7;
-}
-#sidebar ul li a:hover {
-    text-decoration: none;
-    opacity: 1;
-}
-
-li {
-    position: relative;
+    ul {
+        padding-top: 50px;
+        p {
+            color: #fff;
+            padding: 10px;
+        }
+        li a {
+            padding-bottom: 28px;
+            font-size: 12pt;
+            display: block;
+            color: $white;
+            text-align: left;
+            margin-left: 30px;
+            opacity: 0.7;
+            position: relative;
+        }
+        li a:hover {
+            text-decoration: none;
+            opacity: 1; 
+        }
+    }
 }
 
 .sidebar-profile {

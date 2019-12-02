@@ -20,7 +20,6 @@ export default {
 <style>
 .wrapper {
   display: flex;
-  width: 100%;
-  background-color: #FCFCFC;
+  align-items: stretch;
 }
 </style>
