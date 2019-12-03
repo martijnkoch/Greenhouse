@@ -44,7 +44,7 @@
                     <b-card-text> 6 ads available </b-card-text>
                     </div>
                     <div class="lg-6">
-                    <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
+                        <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
                     </div>
                 </div>
             </b-card>
@@ -66,7 +66,9 @@
             >
                 <div class="row card-content">
                     <div class="offset-lg-4 lg-6 guide-button">
-                    <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
+                        <router-link to="/setup-guide">
+                            <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
+                        </router-link>
                     </div>
                 </div>
             </b-card>

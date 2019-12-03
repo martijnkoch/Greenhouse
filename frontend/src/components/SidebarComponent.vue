@@ -17,7 +17,7 @@
                 <router-link to="/dashboard" active-class="active" >Dashboard</router-link>
             </li>
             <li>
-                <router-link to="/">Games</router-link>
+                <router-link to="/games">Games</router-link>
             </li>
             <li>
                 <router-link to="/profile">Profile</router-link>
@@ -27,6 +27,9 @@
             </li>
             <li>
                 <router-link to="/faq">FAQ</router-link>
+            </li>
+            <li>
+                <router-link to="/logout">Logout</router-link>
             </li>
         </ul>
     </nav>

@@ -122,6 +122,7 @@ export default {
     background-color: $white !important;
     h1 {
         color: $dark !important;
+        font-size: 40pt;
     }
     h2 {
         margin-top: 40px;
