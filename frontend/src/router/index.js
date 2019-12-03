@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import GameDetail from '@/components/GameDetail'
+import AdSetup from '@/components/AdSetup'
 import Profile from '@/components/Profile'
 import Login from '@/components/Login'
 
@@ -21,14 +22,19 @@ export default new Router({
       component: Dashboard
     },
     {
-        path: '/profile',
-        name: 'Profile',
-        component: Profile
-      },
-      {
-        path: '/gamedetail',
-        name: 'GameDetail',
-        component: GameDetail
-      }
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },
+    {
+      path: '/gamedetail',
+      name: 'GameDetail',
+      component: GameDetail
+    },
+    {
+      path: '/ad-setup',
+      name: 'AdSetup',
+      component: AdSetup
+    },
   ]
 })

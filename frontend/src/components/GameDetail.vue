@@ -14,7 +14,9 @@
                     <h2>1. Ad after the goal</h2>
                 </b-col>
                 <b-col col lg="4">
-                    <b-button class="float-right gamedetail-cardbutton text-center">Ad setup</b-button>
+                    <router-link to="/ad-setup">
+                        <b-button class="float-right gamedetail-cardbutton text-center">Ad setup</b-button>
+                    </router-link>
                 </b-col>
             </b-row>
             
@@ -26,25 +28,77 @@
             </b-row>
 
             <b-row>
-                <b-col col lg="4" class="link">
-                    <h4>Client: mars</h4>
+                <b-col col lg="4" class="link mr-5">
+                    <h4>Client: Mars</h4>
                     <div class="d-flex mt-2">
-                        <b-col lg="2" class="p-0">
-                            <b-button>Preview</b-button>
-                        </b-col>
-                        <b-col lg="10" class="p-0">
+                        <b-col lg="12" class="p-0">
                         <b-input-group size="lg" append="Copy url">
                             <b-form-input></b-form-input>
                         </b-input-group>
                         </b-col>
                     </div>
                 </b-col>
-                <b-col col lg="4">
-                    <h4>Client: toto</h4>
-                    <b-form-input></b-form-input>
+                <b-col col lg="4" class="link mr-5">
+                    <h4>Client: Toto</h4>
+                    <div class="d-flex mt-2">
+                        <b-col lg="12" class="p-0">
+                        <b-input-group size="lg" append="Copy url">
+                            <b-form-input></b-form-input>
+                        </b-input-group>
+                        </b-col>
+                    </div>
+                </b-col>
+                <b-col col lg="4" class="link mr-5">
+                    <h4>Client: Fox Sports</h4>
+                    <div class="d-flex mt-2">
+                        <b-col lg="12" class="p-0">
+                        <b-input-group size="lg" append="Copy url">
+                            <b-form-input></b-form-input>
+                        </b-input-group>
+                        </b-col>
+                    </div>
+                </b-col>
+                <b-col col lg="4" class="link mr-5">
+                    <h4>Client: Ea Games</h4>
+                    <div class="d-flex mt-2">
+                        <b-col lg="12" class="p-0">
+                        <b-input-group size="lg" append="Copy url">
+                            <b-form-input></b-form-input>
+                        </b-input-group>
+                        </b-col>
+                    </div>
                 </b-col>
             </b-row>
 
+            <b-row>
+                <b-col col lg="4">
+                    <h2>2. Ad after a match</h2>
+                </b-col>
+                <b-col col lg="4">
+                    <router-link to="/ad-setup">
+                        <b-button class="float-right gamedetail-cardbutton text-center">Ad setup</b-button>
+                    </router-link>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col col lg="8">
+                    <h4>One ad available</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus arcu purus, et tempus eros egestas sollicitudin. Morbi nisi orci, egestas non semper id, sollicitudin eu felis. Ut porta auctor nisl sit amet mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis enim nisl, aliquam at tempor eget, pharetra et augue. In vitae tortor a eros vehicula pellentesque. Quisque ac ligula non felis pretium ullamcorper. Nulla facilisi. Maecenas aliquet sapien a ullamcorper mollis. Sed vel tellus vestibulum, aliquam augue eu, mollis lacus. Etiam efficitur mollis lacus, a commodo tortor vulputate et. In ut cursus nisl, ut elementum turpis. Cras ac dolor sed ligula viverra scelerisque at id metus. Donec eget turpis quis leo hendrerit cursus at ut lectus. Vivamus ultrices ut urna ut lacinia. Curabitur sagittis mollis nisi in malesuada.</p>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col col lg="4" class="link mr-5">
+                    <h4>Client: Mars</h4>
+                    <div class="d-flex mt-2">
+                        <b-col lg="12" class="p-0">
+                        <b-input-group size="lg" append="Copy url">
+                            <b-form-input></b-form-input>
+                        </b-input-group>
+                        </b-col>
+                    </div>
+                </b-col>
+            </b-row>
         </b-col>
     </b-row>
 </div>
@@ -96,6 +150,7 @@ export default {
         border-radius: 0px 20px 20px 0px !important;
         font-size: 9pt !important;
         border-top: 1px solid $gh-purple !important;
+        margin-left: -10px;
     }
 
     .gamedetail-cardbutton {
@@ -142,7 +197,8 @@ export default {
         padding: 0px !important;
         padding-left: 11px !important;
         height: 24px !important;
-        border-radius: 20px 0px 0px 20px !important;
+        border-radius: 20px !important;
+
     }
 }
 </style>
