@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="bg">
 <vue-headful
     title="Profile"
     description="Description from vue-headful"
@@ -17,10 +17,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/css/variables.scss";
 
- h1 {
-     color: $gh-purple;
+ #sidebar {
+     display: none;
+ }
+
+ body {
+     background: rgb(88,13,128);
+background: linear-gradient(90deg, rgba(88,13,128,1) 0%, rgba(80,16,112,1) 77%, rgba(68,20,96,1) 100%);
  }
 </style>
