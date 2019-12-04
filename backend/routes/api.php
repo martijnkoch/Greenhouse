@@ -14,13 +14,13 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->group(function () {
+    Route::get('user', 'Api\AuthController@details');
     
 });
 
-//User controller
+// User controller 
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 
-//Game controller
-Route::get('/games', 'Api\GameController@index');
+// Game controller 
 Route::post('/addgame', 'Api\GameController@store');
