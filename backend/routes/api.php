@@ -23,4 +23,5 @@ Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 
 // Game controller 
+Route::get('/games', 'Api\GameController@index');
 Route::post('/addgame', 'Api\GameController@store');
