@@ -2,16 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import vueHeadful from 'vue-headful';
 import BootstrapVue from 'bootstrap-vue'
+import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faUserSecret, faSearch)
-
+library.add(faUserSecret, faSearch);
 Vue.component('vue-headful', vueHeadful);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.prototype.$http = axios;
 
 import router from './router/index.js'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -20,7 +21,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 //Hover css libary 
 require('./assets/css/hover-min.css')
 
-Vue.use(BootstrapVue)
+Vue.use(
+  BootstrapVue
+)
 
 new Vue({
   router,

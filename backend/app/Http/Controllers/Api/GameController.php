@@ -37,7 +37,7 @@ class GameController extends Controller
             'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-
+  
         if(!$request->hasFile('image')) {
             return response()->json(['upload_file_not_found'], 400);
         }
@@ -72,14 +72,18 @@ class GameController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Show single game
      */
     public function show($id)
     {
-        //
+        if (Game::where('id', $id)->exists()) {
+            $student = Game::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($student, 200);
+          } else {
+            return response()->json([
+              "message" => "Game not found"
+            ], 404);
+          }
     }
 
     /**

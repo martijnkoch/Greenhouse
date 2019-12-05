@@ -29,7 +29,7 @@ export default new Router({
       component: Profile
     },
     {
-      path: '/gamedetail',
+      path: '/game/:id',
       name: 'GameDetail',
       component: GameDetail
     },

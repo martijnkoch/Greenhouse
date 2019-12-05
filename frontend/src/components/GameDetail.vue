@@ -5,9 +5,9 @@
     description="Description from vue-headful"
     />
     <b-row class="game-detail">
-        <b-col lg="8" md="12" sm="12" class="mt-5 ml-5 pb-5">
+        <b-col lg="8" md="12" sm="12" class="mt-5 ml-5 pb-5" >
             <SearchbarComponentGrey></SearchbarComponentGrey>
-            <h1>Fifa 20</h1>
+            <h1>{{game.id}}</h1>
             <b-img src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_EaSportsFifa20NintendoSwitchLegacyEdition_image1600w.jpg" fluid alt="Responsive image"></b-img>
             <b-row>
                 <b-col col lg="4">
@@ -105,12 +105,33 @@
 </template>
 
 <script>
+ /* eslint-disable */
 import SearchbarComponentGrey from './SearchbarComponentGrey.vue'
 
 export default {
   name: 'app',
   components: {
         'SearchbarComponentGrey': SearchbarComponentGrey
+  },
+  data () {
+    return {
+        game: []
+     }
+  },
+  methods: {
+      fetchGame(id){
+        this.$http.get('http://127.0.0.1:8000/api/game/'+id)
+            .then(response => this.game = response.data)
+            .catch(error => this.game = [{title: 'no game data found'}]);
+      }
+  },
+  data () {
+    return {
+        game: []
+     }
+  },
+    created: function(){
+        this.fetchGame(this.$route.params.id);
   }
 }
 </script>

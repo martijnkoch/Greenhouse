@@ -8,11 +8,12 @@
         <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5">
             <SearchbarComponentWhite></SearchbarComponentWhite>
             <h1>Popular games</h1>
-            <div class="d-flex">
+            <div class="d-flex"  >
             
-                <b-card
-                title="Fifa 20"
-                img-src="https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-20/images/2019/07/fifa20-navtile-16x9-standardedition.png"
+                <b-card 
+                v-for="game in games" v-bind:key="game.id"
+                :title="game.name"
+                :img-src="'http://127.0.0.1:8000/' + game.image"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
@@ -23,41 +24,21 @@
                         <b-card-text> 6 ads available </b-card-text>
                         </div>
                         <div class="lg-6">
-                        <router-link to="/gamedetail">
+                        <router-link v-bind:to="'/game/'+game.id">
                             <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
                         </router-link>
                         </div>
                     </div>
                 </b-card>
-           
-
-            <b-card
-            title="Fifa 20"
-            img-src="https://helden-des-lichts.com/index.php?media/7-lol-banner-jpg/&thumbnail=large"
-            img-alt="Image"
-            img-top
-            style="max-width: 20rem;"
-            class="mb-2 default-card hvr-grow col-lg-12 col-md-12 col-sm-12 mr-5"
-            >
-                <div class="row card-content">
-                    <div class="lg-6">
-                    <b-card-text> 6 ads available </b-card-text>
-                    </div>
-                    <div class="lg-6">
-                        <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
-                    </div>
-                </div>
-            </b-card>
            </div>
          </b-col>
     </b-row>
 
     <b-row>
-        <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5">
-
+        <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5" >
             <h1>Guides</h1>
             <b-card
-            title="Touchportal Guide"
+            title="Test"
             img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
             img-alt="Image"
             img-top
@@ -78,13 +59,29 @@
 </template>
 
 <script>
+ /* eslint-disable */
 import SearchbarComponentWhite from './SearchbarComponentWhite.vue'
 
 export default {
   name: 'app',
   components: {
     'SearchbarComponentWhite': SearchbarComponentWhite
-  }
+  },
+  methods: {
+    singleGame (id) {
+      this.$router.push('/game/' + id)
+    }
+  },
+  mounted: function() {
+      this.$http.get('http://127.0.0.1:8000/api/games')
+        .then(response => this.games = response.data)
+        .catch(error => this.games = [{title: 'no games found'}]);
+  },
+  data () {
+    return {
+        games: null
+    }
+ }
 }
 </script>
 

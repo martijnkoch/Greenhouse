@@ -24,4 +24,5 @@ Route::post('/login', 'Api\AuthController@login');
 
 // Game controller 
 Route::get('/games', 'Api\GameController@index');
+Route::get('/game/{id}', 'Api\GameController@show');
 Route::post('/addgame', 'Api\GameController@store');
