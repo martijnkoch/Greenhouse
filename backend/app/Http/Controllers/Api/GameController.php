@@ -100,8 +100,6 @@ class GameController extends Controller
     public function edit(Request $request, $id)
     {
         $game = Game::findOrFail($id);
-
-
     }
 
     /**
@@ -113,7 +111,7 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $game = Game::findOrFail($id);
     }
 
     /**
@@ -121,6 +119,9 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $game = Game::findOrFail($id);
+        $game->delete();
+
+        return response()->json(["message" => "Game deleted succesfully"], 204);
     }
 }
