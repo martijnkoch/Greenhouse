@@ -1,14 +1,14 @@
 <template>
 <div class="container-fluid header-container">
 <vue-headful
-    title="Game Detail - "
+    title="Game Detail"
     description="Description from vue-headful"
     />
-    <b-row class="game-detail">
+    <b-row class="game-detail" v-if="gameData">
         <b-col lg="8" md="12" sm="12" class="mt-5 ml-5 pb-5" >
             <SearchbarComponentGrey></SearchbarComponentGrey>
-            <h1>{{game.id}}</h1>
-            <b-img src="https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_EaSportsFifa20NintendoSwitchLegacyEdition_image1600w.jpg" fluid alt="Responsive image"></b-img>
+            <h1 >{{gameData[0].name}}</h1>
+            <b-img :src="`http://127.0.0.1:8000/`+gameData[0].image" fluid alt="Responsive image"></b-img>
             <b-row>
                 <b-col col lg="4">
                     <h2>1. Ad after the goal</h2>
@@ -115,25 +115,26 @@ export default {
   },
   data () {
     return {
-        game: []
+        isLoading: false,
+        gameData: 0
      }
   },
-  methods: {
-      fetchGame(id){
-        this.$http.get('http://127.0.0.1:8000/api/game/'+id)
-            .then(response => this.game = response.data)
-            .catch(error => this.game = [{title: 'no game data found'}]);
-      }
-  },
-  data () {
-    return {
-        game: []
-     }
-  },
-    created: function(){
+    methods: {
+        fetchGame(){
+           return this.$http.get(`http://127.0.0.1:8000/api/game/${this.$route.params.id}`)
+            .then((response) => {
+                this.gameData = response.data;
+            })
+            .catch(error => 
+                this.gameData = [{title: 'no game data found'}]);
+        }
+    },
+      created: function(){
         this.fetchGame(this.$route.params.id);
+    }
+    
   }
-}
+
 </script>
 
 <style lang="scss">
