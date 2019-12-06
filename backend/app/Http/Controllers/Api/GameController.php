@@ -18,6 +18,14 @@ class GameController extends Controller
     }
 
     /**
+    * Display the 3 most popular games 
+     */
+    public function mostPopular()
+    {
+        return Game::all();
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -87,14 +95,13 @@ class GameController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Edit a game
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $game = Game::findOrFail($id);
+
+
     }
 
     /**
@@ -110,10 +117,7 @@ class GameController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Delete a game
      */
     public function destroy($id)
     {
