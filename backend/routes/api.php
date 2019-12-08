@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->group(function () {
     Route::get('user', 'Api\AuthController@details');
-    
+    Route::get('/games', 'Api\GameController@index');
 });
 
 // User controller 

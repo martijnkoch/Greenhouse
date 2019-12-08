@@ -7,7 +7,6 @@ import SetupGuide from '@/components/SetupGuide'
 import Profile from '@/components/Profile'
 import Login from '@/components/Login'
 
-
 Vue.use(Router)
 
 export default new Router({

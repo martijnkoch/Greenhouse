@@ -1,5 +1,5 @@
 <template>
-    <!-- Sidebar -->
+    <!--
     <nav id="sidebar">
         <div class="sidebar-header">
             <router-link to="/dashboard">
@@ -33,6 +33,45 @@
             </li>
         </ul>
     </nav>
+    -->
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <router-link to="/dashboard">
+                    <img src="@/assets/img/GHG-logo-white_RGB.png"/>
+                </router-link>
+            </div>
+            <div class="sidebar-profile">
+                <router-link to="/profile">
+                    <img src="@/assets/img/jordan.jpg"/>
+                </router-link>
+                <h4>Hello, Jordan</h4>
+            </div>
+
+            <ul class="list-unstyled components">
+            <li>
+                <router-link to="/dashboard" active-class="active" >Dashboard</router-link>
+            </li>
+            <li>
+                <router-link to="/games">Games</router-link>
+            </li>
+            <li>
+                <router-link to="/profile">Profile</router-link>
+            </li>
+            <li>
+                <router-link to="/setup-guides">Setup Guides</router-link>
+            </li>
+            <li>
+                <router-link to="/faq">FAQ</router-link>
+            </li>
+            <li>
+                <router-link to="/logout">Logout</router-link>
+            </li>
+        </ul>
+
+        </nav>
+    
 </template>
 
 <script>
@@ -47,12 +86,18 @@ export default {
 <style lang="scss">
 @import "../assets/css/variables.scss";
 
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
 #sidebar {
-    background: $gh-purple;
-    min-width: 172px;
+   min-width: 172px;
     max-width: 172px;
-    min-height: 100vh;
-    -webkit-box-shadow: 3px 0px 12px -2px rgba(0,0,0,0.20);
+    background: $gh-purple;
+    transition: all 0.3s;
+        -webkit-box-shadow: 3px 0px 12px -2px rgba(0,0,0,0.20);
     -moz-box-shadow: 3px 0px 12px -2px rgba(0,0,0,0.20);
     box-shadow: 3px 0px 12px -2px rgba(0,0,0,0.20);
     z-index: 1;
@@ -64,7 +109,47 @@ export default {
             margin-left: 3.2rem !important;
         }
     }
-    ul {
+}
+
+.sidebar-profile {
+    padding: 30px;
+    padding-left: 10px;
+    padding-top: 100px;
+    img {
+        border-radius: 50%;
+        height: 50px;
+        margin-left: 2.5rem !important;
+    }
+    h4 {
+        margin-top: 18px;
+        color: $white;
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+.router-link-exact-active {
+    color: $white !important;
+    opacity: 1 !important;
+}
+.router-link-exact-active::before  {
+content: '';
+  background:url('../assets/img/activeclass.png');
+  width:28px; /* width of the image */;
+  height: 37px; /* height of the image */;
+  display: block;
+  position: absolute;
+  margin-top: -8px;
+  margin-left: -38px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background :$gh-purple /*#6d7fcc*/;
+}
+
+#sidebar {
+   ul {
         padding-top: 50px;
         p {
             color: #fff;
@@ -87,34 +172,71 @@ export default {
     }
 }
 
-.sidebar-profile {
-    padding: 30px;
-    padding-left: 10px;
-    padding-top: 100px;
-    img {
-        border-radius: 50%;
-        height: 50px;
-        margin-left: 2.5rem !important;
-    }
-    h4 {
-        margin-top: 18px;
-        color: $white;
-        font-size: 14px;
-        text-align: center;
-    }
+#sidebar ul li.active>a, a[aria-expanded="true"] {
+    color: blue;
+    background: blue;
 }
-.router-link-exact-active {
-    color: $white !important;
-    opacity: 1 !important;
+
+a[data-toggle="collapse"] {
+    position: relative;
 }
-.router-link-exact-active::before  {
-content: '';
-  background:url('../assets/img/activeclass.png');
-  width:28px; /* width of the image */;
-  height: 37px; /* height of the image */;
-  display: block;
-  position: absolute;
-  margin-top: -8px;
-  margin-left: -38px;
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: blue;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: blue;
+    color: blue;
+}
+
+a.article,
+a.article:hover {
+    background: blue !important;
+    color: blue !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -172px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
 }
 </style>

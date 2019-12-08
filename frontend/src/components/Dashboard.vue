@@ -1,19 +1,20 @@
 <template>
-<div class="container-fluid header-container">
+<div class="wrapper">
 <vue-headful
     title="Dashboard"
     description="Description from vue-headful"
 />
+<SidebarComponent></SidebarComponent>
+<div class="content container-fluid">
+<SearchbarComponentWhite></SearchbarComponentWhite>
     <b-row class="top-row">
         <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5">
-            <SearchbarComponentWhite></SearchbarComponentWhite>
             <h1>Popular games</h1>
-            <div class="d-flex"  >
-            
+            <div class="d-flex">
                 <b-card 
                 v-for="game in games" v-bind:key="game.id"
                 :title="game.name"
-                :img-src="'http://127.0.0.1:8000/' + game.image"
+                :img-src="'http://127.0.0.1:8000/'+game.image"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
@@ -56,15 +57,18 @@
          </b-col>
     </b-row>
 </div>
+</div>
 </template>
 
 <script>
  /* eslint-disable */
+import SidebarComponent from './SidebarComponent.vue'
 import SearchbarComponentWhite from './SearchbarComponentWhite.vue'
 
 export default {
   name: 'app',
   components: {
+    'SidebarComponent': SidebarComponent,
     'SearchbarComponentWhite': SearchbarComponentWhite
   },
   methods: {
@@ -73,8 +77,11 @@ export default {
     }
   },
   mounted: function() {
-      this.$http.get('http://127.0.0.1:8000/api/games')
-        .then(response => this.games = response.data)
+      this.$http
+        .get('http://127.0.0.1:8000/api/games')
+        .then(response => {
+            console.log(response)
+            this.games = response.data})
         .catch(error => this.games = [{title: 'no games found'}]);
   },
   data () {
@@ -146,4 +153,9 @@ export default {
      }
      
  }
+ .content{  
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
 </style>

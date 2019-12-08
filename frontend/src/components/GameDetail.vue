@@ -1,11 +1,14 @@
 <template>
-<div class="container-fluid header-container">
+<div class="wrapper">
 <vue-headful
-    title="Game Detail"
-    description="Description from vue-headful"
-    />
+title="Game Detail"
+description="Description from vue-headful"
+/>
+<SidebarComponent></SidebarComponent>
+<div class="container-fluid header-container">
+
     <b-row class="game-detail" v-if="gameData">
-        <b-col lg="8" md="12" sm="12" class="mt-5 ml-5 pb-5" >
+        <b-col lg="8" md="12" sm="12" class="mt-5 pb-5" >
             <SearchbarComponentGrey></SearchbarComponentGrey>
             <h1 >{{gameData[0].name}}</h1>
             <b-img :src="`http://127.0.0.1:8000/`+gameData[0].image" fluid alt="Responsive image"></b-img>
@@ -102,16 +105,19 @@
         </b-col>
     </b-row>
 </div>
+</div>
 </template>
 
 <script>
  /* eslint-disable */
+import SidebarComponent from './SidebarComponent.vue'
 import SearchbarComponentGrey from './SearchbarComponentGrey.vue'
 
 export default {
   name: 'app',
   components: {
-        'SearchbarComponentGrey': SearchbarComponentGrey
+    'SidebarComponent': SidebarComponent,
+    'SearchbarComponentGrey': SearchbarComponentGrey
   },
   data () {
     return {

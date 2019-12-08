@@ -1,10 +1,10 @@
 <template>
-<div class="bg">
+<div>
 <vue-headful
     title="Profile"
     description="Description from vue-headful"
     />
-<h1>Login page</h1>
+<h1>Profile page</h1>
 </div>
 </template>
 
@@ -17,15 +17,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/css/variables.scss";
 
- #sidebar {
-     display: none;
- }
-
- body {
-     background: rgb(88,13,128);
-background: linear-gradient(90deg, rgba(88,13,128,1) 0%, rgba(80,16,112,1) 77%, rgba(68,20,96,1) 100%);
+ h1 {
+     color: $gh-purple;
  }
 </style>
