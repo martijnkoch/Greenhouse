@@ -7,12 +7,12 @@
 <SidebarComponent></SidebarComponent>
 <div class="content container-fluid">
 <SearchbarComponentWhite></SearchbarComponentWhite>
-    <b-row class="top-row">
-        <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5">
-            <h1>Popular games</h1>
-            <div class="d-flex">
+
+<div class="top-row">
+    <h1>Popular games</h1>
+    <b-row>
+        <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" v-for="game in games" v-bind:key="game.id">
                 <b-card 
-                v-for="game in games" v-bind:key="game.id"
                 :title="game.name"
                 :img-src="'http://127.0.0.1:8000/'+game.image"
                 img-alt="Image"
@@ -31,12 +31,13 @@
                         </div>
                     </div>
                 </b-card>
-           </div>
+        
          </b-col>
     </b-row>
+</div>
 
     <b-row>
-        <b-col lg="4" md="6" sm="12" class="mt-5 ml-5 pb-5" >
+        <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
             <h1>Guides</h1>
             <b-card
             title="Test"
@@ -157,5 +158,8 @@ export default {
     width: 100%;
     min-height: 100vh;
     transition: all 0.3s;
+}
+.container-fluid .row {
+    
 }
 </style>

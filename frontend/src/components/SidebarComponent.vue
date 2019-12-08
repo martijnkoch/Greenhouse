@@ -172,57 +172,6 @@ content: '';
     }
 }
 
-#sidebar ul li.active>a, a[aria-expanded="true"] {
-    color: blue;
-    background: blue;
-}
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: blue;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
-    background: blue;
-    color: blue;
-}
-
-a.article,
-a.article:hover {
-    background: blue !important;
-    color: blue !important;
-}
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -239,4 +188,6 @@ a.article:hover {
         display: none;
     }
 }
+
+
 </style>

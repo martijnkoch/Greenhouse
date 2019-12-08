@@ -21,8 +21,6 @@ export default {
 .searchbar-bg {
     padding: 0 !important;
     background-color: $grey;
-    margin-left: -15px;
-    margin-right: -15px;
 }
  .searchbar-white {
      width: 320px !important;
