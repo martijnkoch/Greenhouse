@@ -57,12 +57,21 @@ class AuthController extends Controller
     }
 
      /**
-     * Returns Authenticated User Details
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * User detail
      */
     public function details()
     {
         return response()->json(['user' => auth()->user()], 200);
+    }
+
+    /**
+     * User detail
+     */
+    public function logout()
+    {
+        auth()->user()->tokens->each(function ($token, $key) {
+            $token->delete();
+        });
+        return response()->json('Logged out successfully', 200);
     }
 }

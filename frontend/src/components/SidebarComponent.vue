@@ -66,7 +66,7 @@
                 <router-link to="/faq">FAQ</router-link>
             </li>
             <li>
-                <router-link to="/logout">Logout</router-link>
+                <a href="#" @click.prevent="logout">Logout</a>
             </li>
         </ul>
 
@@ -75,11 +75,17 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  components: {
-    
-  }
+ /* eslint-disable */
+export default{
+    methods:{
+        logout(){
+            this.$http.post('http://localhost:81/api/logout').then(response => {
+                location.reload();
+            }).catch(error => {
+                location.reload();
+            });
+        }
+    }
 }
 </script>
 
