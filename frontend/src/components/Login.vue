@@ -82,6 +82,7 @@
     .form-control{
       background: $white;
       border: 0px;
+      
     }
     h2 {
       color: $dark;
@@ -98,6 +99,7 @@
       border-radius: 50px;
       height: 30px;
       width: 240px;
+      padding: 0.375rem 0.75rem;
     }
     input[type="email"]::placeholder, input[type="password"]::placeholder{
       color: $gh-purple;
