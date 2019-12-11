@@ -14,7 +14,7 @@
         <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" v-for="game in games" v-bind:key="game.id">
                 <b-card 
                 :title="game.name"
-                :img-src="'http://127.0.0.1:8000/'+game.image"
+                :img-src="'http://localhost:81/'+game.image"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
@@ -79,7 +79,7 @@ export default {
   },
   mounted: function() {
       this.$http
-        .get('http://127.0.0.1:8000/api/games')
+        .get('http://localhost:81/api/games')
         .then(response => {
             console.log(response)
             this.games = response.data})

@@ -13,6 +13,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        
         $validatedData = $request->validate([
             'name'=>'required|max:55',
             'email'=>'email|required|unique:users',
@@ -25,6 +26,7 @@ class AuthController extends Controller
         $accessToken = $user->createToken('authToken')->accessToken;
 
         return response(['user'=> $user, 'accessToken'=>$accessToken]);
+    
     }
 
     /**
@@ -32,17 +34,26 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $loginData = $request->validate([
-            'email' => 'email|required',
-            'password' => 'required'
-        ]);
-
-        if(!auth()->attempt($loginData)) {
-            return response(['message'=>'Invalid credentials']);
+        $http = new \GuzzleHttp\Client;
+        try {
+            $response = $http->post(config('services.passport.login_endpoint'), [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => config('services.passport.client_id'),
+                    'client_secret' => config('services.passport.client_secret'),
+                    'username' => $request->username,
+                    'password' => $request->password,
+                ]
+            ]);
+            return $response->getBody();
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            if ($e->getCode() === 400) {
+                return response()->json('Invalid Request. Please enter a username or a password.', $e->getCode());
+            } else if ($e->getCode() === 401) {
+                return response()->json('Your credentials are incorrect. Please try again', $e->getCode());
+            }
+            return response()->json('Something went wrong on the server.', $e->getCode());
         }
-
-        $accessToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
     }
 
      /**
