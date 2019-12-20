@@ -14,7 +14,7 @@
         <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" v-for="game in games" v-bind:key="game.id">
                 <b-card 
                 :title="game.name"
-                :img-src="'http://localhost:81/'+game.image"
+                :img-src="'http://localhost:8888/'+game.image"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
@@ -40,7 +40,7 @@
         <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
             <h1>Guides</h1>
             <b-card
-            title="Test"
+            title="OBS Guide"
             img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
             img-alt="Image"
             img-top
@@ -79,7 +79,7 @@ export default {
   },
   mounted: function() {
       this.$http
-        .get('http://localhost:81/api/games')
+        .get('http://localhost:8888/api/games')
         .then(response => {
             console.log(response)
             this.games = response.data})

@@ -11,7 +11,7 @@ description="Description from vue-headful"
         <b-col lg="8" md="12" sm="12" class="mt-5 pb-5" >
             <SearchbarComponentGrey></SearchbarComponentGrey>
             <h1 >{{gameData[0].name}}</h1>
-            <b-img :src="`http://localhost:81/`+gameData[0].image" fluid alt="Responsive image"></b-img>
+            <b-img :src="`http://localhost:8888/`+gameData[0].image" fluid alt="Responsive image"></b-img>
             <b-row>
                 <b-col col lg="4">
                     <h2>1. Ad after the goal</h2>
@@ -127,7 +127,7 @@ export default {
   },
     methods: {
         fetchGame(){
-           return this.$http.get(`http://localhost:81/api/game/${this.$route.params.id}`)
+           return this.$http.get(`http://localhost:8888/api/game/${this.$route.params.id}`)
             .then((response) => {
                 this.gameData = response.data;
             })
