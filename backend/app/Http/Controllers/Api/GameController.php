@@ -71,12 +71,17 @@ class GameController extends Controller
         // Create the new game
         $game = new Game;
         $game->name = $request->input('name');
-
         $game->image = $path;
 
         $game->save();
 
-        return $game;
+        //Response message
+        $response = [
+            'success' => true,
+            'data' => $game,
+            'message' => 'Game stored successfully.'
+        ];
+        return response()->json($response, 200);
     }
 
     /**

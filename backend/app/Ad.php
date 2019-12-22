@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ad extends Model
 {
   protected $fillable = [
-    'game-name',
-    'scene-number',
-    'client-name',
+    'gamename',
+    'scenenumber',
+    'clientname',
     'file'
   ];
 
