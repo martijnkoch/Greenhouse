@@ -15,10 +15,10 @@ class CreateAdsTable extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('gameName');
-            $table->integer('sceneNumber');
-            $table->string('clientName');
-            $table->string('fileName');
+            $table->string('game-name');
+            $table->integer('scene-number');
+            $table->string('client-name');
+            $table->string('file');
             $table->timestamps();
         });
     }
