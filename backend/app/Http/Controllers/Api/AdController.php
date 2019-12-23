@@ -45,13 +45,13 @@ class AdController extends Controller
 
         //Handle file uoload
         $file = $request->file('file');
-        //Get oroginal file nam
-        $originalName = $file->getClientOriginalName();
-        // Get just filename
-        $filename = pathinfo($originalName, PATHINFO_FILENAME);
+
         // Get the ext
         $extension = $file->getClientOriginalExtension();
-        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $fileNameToStore =  $request->input('gamename').'-'.
+                            $request->input('scenenumber').'-'.
+                            $request->input('clientname').'.'.
+                            $extension;
         $path = $file->storeAs('/videos', $fileNameToStore);
         $file_path = 'videos/';
         $file->move($file_path, $fileNameToStore);
