@@ -27,7 +27,9 @@ Route::post('/login', 'Api\AuthController@login');
 Route::get('/games', 'Api\GameController@index');
 Route::get('/mostpopular', 'Api\GameController@mostPopular');
 Route::get('/game/{id}', 'Api\GameController@show');
-Route::get('/game/{id}/ads', 'Api\GameController@showAds');
+Route::get('/game/{id}/ads-one', 'Api\GameController@showAdsOne');
+Route::get('/game/{id}/ads-two', 'Api\GameController@showAdsTwo');
+Route::get('/game/{id}/ads-three', 'Api\GameController@showAdsThree');
 Route::post('/add-game', 'Api\GameController@store');
 Route::delete('/deletegame/{id}', 'Api\GameController@destroy');
 

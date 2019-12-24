@@ -31,42 +31,12 @@ description="Description from vue-headful"
             </b-row>
 
             <b-row>
-                <b-col col lg="4" class="link mr-5" v-for="ad in ads" v-bind:key="ad.id">
+                <b-col col lg="4" class="link mr-5" v-for="ad in adsOne" v-bind:key="ad.id">
                     <h4>Client: {{ad.clientname}}</h4>
                     <div class="d-flex mt-2">
                         <b-col lg="12" class="p-0">
                         <b-input-group size="lg" append="Copy url">
-                            <b-form-input :placeholder="'http://localhost:8888/'+ad.file"></b-form-input>
-                        </b-input-group>
-                        </b-col>
-                    </div>
-                </b-col>
-                <b-col col lg="4" class="link mr-5">
-                    <h4>Client: Toto</h4>
-                    <div class="d-flex mt-2">
-                        <b-col lg="12" class="p-0">
-                        <b-input-group size="lg" append="Copy url">
-                            <b-form-input></b-form-input>
-                        </b-input-group>
-                        </b-col>
-                    </div>
-                </b-col>
-                <b-col col lg="4" class="link mr-5">
-                    <h4>Client: Fox Sports</h4>
-                    <div class="d-flex mt-2">
-                        <b-col lg="12" class="p-0">
-                        <b-input-group size="lg" append="Copy url">
-                            <b-form-input></b-form-input>
-                        </b-input-group>
-                        </b-col>
-                    </div>
-                </b-col>
-                <b-col col lg="4" class="link mr-5">
-                    <h4>Client: Ea Games</h4>
-                    <div class="d-flex mt-2">
-                        <b-col lg="12" class="p-0">
-                        <b-input-group size="lg" append="Copy url">
-                            <b-form-input></b-form-input>
+                            <b-form-input :value="'http://localhost:8888/'+ad.file"></b-form-input>
                         </b-input-group>
                         </b-col>
                     </div>
@@ -123,7 +93,7 @@ export default {
     return {
         isLoading: false,
         gameData: 0,
-        ads: null
+        adsOne: null
      }
   },
     methods: {
@@ -143,11 +113,11 @@ export default {
     },
       mounted: function() {
       this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads`)
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-one`)
         .then(response => {
             console.log(response)
-            this.ads = response.data})
-        .catch(error => this.ads = [{title: 'no ads found'}]);
+            this.adsOne = response.data})
+        .catch(error => this.adsOne = [{title: 'no ads found'}]);
   },
     
   }
