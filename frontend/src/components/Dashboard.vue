@@ -8,55 +8,74 @@
 <div class="content container-fluid">
 <SearchbarComponentWhite></SearchbarComponentWhite>
 
-<div class="top-row">
-    <h1>Popular games</h1>
-    <b-row>
-        <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" v-for="game in games" v-bind:key="game.id">
-                <b-card 
-                :title="game.name"
-                :img-src="'http://localhost:8888/'+game.image"
+    <div class="top-row">
+        <h1>Popular games</h1>
+        <b-row>
+            <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" v-for="game in games" v-bind:key="game.id">
+                    <b-card 
+                    :title="game.name"
+                    :img-src="'http://localhost:8888/'+game.image"
+                    img-alt="Image"
+                    img-top
+                    style="max-width: 20rem;"
+                    class="mb-2 default-card hvr-grow col-lg-12 col-md-12 col-sm-12 mr-5"
+                    >
+                        <div class="row card-content">
+                            <div class="lg-6">
+                            <b-card-text> 6 ads available </b-card-text>
+                            </div>
+                            <div class="lg-6">
+                            <router-link v-bind:to="'/game/'+game.id">
+                                <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
+                            </router-link>
+                            </div>
+                        </div>
+                    </b-card>
+            
+            </b-col>
+        </b-row>
+    </div>
+    <div class="bottom-row">
+     <h1>Guides</h1>
+        <b-row>
+            <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
+                <b-card
+                title="OBS Guide"
+                img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
                 class="mb-2 default-card hvr-grow col-lg-12 col-md-12 col-sm-12 mr-5"
                 >
                     <div class="row card-content">
-                        <div class="lg-6">
-                        <b-card-text> 6 ads available </b-card-text>
-                        </div>
-                        <div class="lg-6">
-                        <router-link v-bind:to="'/game/'+game.id">
-                            <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
-                        </router-link>
+                        <div class="offset-lg-4 lg-6 guide-button">
+                            <router-link to="/setup-guide">
+                                <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
+                            </router-link>
                         </div>
                     </div>
                 </b-card>
-        
-         </b-col>
-    </b-row>
-</div>
-
-    <b-row>
-        <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
-            <h1>Guides</h1>
-            <b-card
-            title="OBS Guide"
-            img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
-            img-alt="Image"
-            img-top
-            style="max-width: 20rem;"
-            class="mb-2 default-card hvr-grow"
-            >
-                <div class="row card-content">
-                    <div class="offset-lg-4 lg-6 guide-button">
-                        <router-link to="/setup-guide">
-                            <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
-                        </router-link>
+            </b-col>
+            <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
+                <b-card
+                title="Touchportal Guide"
+                img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
+                img-alt="Image"
+                img-top
+                style="max-width: 20rem;"
+                class="mb-2 default-card hvr-grow col-lg-12 col-md-12 col-sm-12 mr-5"
+                >
+                    <div class="row card-content">
+                        <div class="offset-lg-4 lg-6 guide-button">
+                            <router-link to="/setup-guide">
+                                <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
+                            </router-link>
+                        </div>
                     </div>
-                </div>
-            </b-card>
-         </b-col>
-    </b-row>
+                </b-card>
+            </b-col>
+        </b-row>
+    </div>
 </div>
 </div>
 </template>
@@ -99,21 +118,21 @@ export default {
 .top-row {
     background-color: $grey;
     border-radius: 0px 0px 0px 50px;
+    padding-left: 50px;
 }
 
  h1 {
      color: $gh-purple;
      font-weight: 700 !important;
      font-size: 30pt !important;
-     margin-bottom: 33px !important;
  }
 
  .default-card {
     padding: 0 !important;
     border-radius: 25px !important;
-    -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16);
-    -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16);
-    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16);
+    -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16) !important;
+    -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16) !important;
+    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.16) !important;
      img {
          border-radius: 25px 25px 0px 0px;
          height: 160px;
@@ -159,7 +178,22 @@ export default {
     min-height: 100vh;
     transition: all 0.3s;
 }
-.container-fluid .row {
-    
+.bottom-row {
+    padding-left: 50px;
+    h1 {
+        margin-top: 50px;
+    }
 }
+</style>
+
+<style>
+    .container-fluid{
+        padding-left:0px !important;
+        width:100%;
+    }
+   @media (min-width: 992px){
+       .col-lg-4{
+           flex: 0 0 30.333333% !important;
+       }
+   }
 </style>

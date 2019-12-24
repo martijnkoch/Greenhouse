@@ -13,7 +13,7 @@ description="Description from vue-headful"
             <h1 >{{gameData[0].name}}</h1>
             <b-img :src="`http://localhost:8888/`+gameData[0].image" fluid alt="Responsive image"></b-img>
             <b-row>
-                <b-col col lg="4">
+                <b-col col lg="6">
                     <h2>1. Ad after the goal</h2>
                 </b-col>
                 <b-col col lg="4">
@@ -24,7 +24,7 @@ description="Description from vue-headful"
             </b-row>
             
             <b-row>
-                <b-col col lg="8">
+                <b-col col lg="10">
                     <h4>Four ads available</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus arcu purus, et tempus eros egestas sollicitudin. Morbi nisi orci, egestas non semper id, sollicitudin eu felis. Ut porta auctor nisl sit amet mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis enim nisl, aliquam at tempor eget, pharetra et augue. In vitae tortor a eros vehicula pellentesque. Quisque ac ligula non felis pretium ullamcorper. Nulla facilisi. Maecenas aliquet sapien a ullamcorper mollis. Sed vel tellus vestibulum, aliquam augue eu, mollis lacus. Etiam efficitur mollis lacus, a commodo tortor vulputate et. In ut cursus nisl, ut elementum turpis. Cras ac dolor sed ligula viverra scelerisque at id metus. Donec eget turpis quis leo hendrerit cursus at ut lectus. Vivamus ultrices ut urna ut lacinia. Curabitur sagittis mollis nisi in malesuada.</p>
                 </b-col>
@@ -148,9 +148,12 @@ export default {
 
 .game-detail{
     background-color: $white !important;
+    padding-left: 50px;
     h1 {
         color: $dark !important;
         font-size: 40pt;
+        margin-bottom: 20px;
+        padding-top: 30px;
     }
     h2 {
         margin-top: 40px;
@@ -170,7 +173,7 @@ export default {
     }
     p {
         word-spacing: normal;
-        font-size: 14pt;
+        font-size: 12pt;
     }
     .input-group-text {
         background-color: $gh-purple;

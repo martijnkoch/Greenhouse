@@ -11,4 +11,8 @@ class Game extends Model
     ];
 
     public $timestamps = false;
+
+    public function ads() {
+        return $this->hasMany(Ads::class);
+    }
 }
