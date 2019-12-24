@@ -25,7 +25,9 @@ Route::post('/login', 'Api\AuthController@login');
 
 // Game controller 
 Route::get('/games', 'Api\GameController@index');
+Route::get('/mostpopular', 'Api\GameController@mostPopular');
 Route::get('/game/{id}', 'Api\GameController@show');
+Route::get('/game/{id}/ads', 'Api\GameController@showAds');
 Route::post('/add-game', 'Api\GameController@store');
 Route::delete('/deletegame/{id}', 'Api\GameController@destroy');
 

@@ -22,7 +22,7 @@
                     >
                         <div class="row card-content">
                             <div class="lg-6">
-                            <b-card-text> 6 ads available </b-card-text>
+                            <b-card-text>{{game.ads_count}} ads available</b-card-text>
                             </div>
                             <div class="lg-6">
                             <router-link v-bind:to="'/game/'+game.id">
@@ -98,7 +98,7 @@ export default {
   },
   mounted: function() {
       this.$http
-        .get('http://localhost:8888/api/games')
+        .get('http://localhost:8888/api/mostpopular')
         .then(response => {
             console.log(response)
             this.games = response.data})

@@ -22,7 +22,8 @@ class GameController extends Controller
      */
     public function mostPopular()
     {
-        return Game::all();
+        $games = Game::withCount('ads')->orderBy('ads_count', 'desc')->take(3)->get();
+        return response($games, 200);
     }
 
     /**
@@ -94,11 +95,25 @@ class GameController extends Controller
             return response($game, 200);
           } else {
             return response()->json([
-              "message" => "Game not found"
+                "message" => "Game not found"
             ], 404);
           }
     }
 
+    /**
+     * Show single game
+     */
+    public function showAds($id)
+    {
+        if (Game::where('id', $id)->exists()) {
+            $ad = Game::find($id)->ads->toJson(JSON_PRETTY_PRINT);
+            return response($ad, 200);
+        } else {
+            return response()->json([
+                "message" => "Game not found"
+            ], 404);
+        }
+    }
     /**
      * Edit a game
      */

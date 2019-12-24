@@ -27,6 +27,7 @@ class AdController extends Controller
         //Rules
         $rules = [
             'gamename' => 'required',
+            'game_id' => 'required',
             'scenenumber' => 'required',
             'clientname' => 'required',
             'file' => 'required|mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
@@ -35,6 +36,7 @@ class AdController extends Controller
         //Error messages
         $messages = [
             'gamename' => 'A game name is required',
+            'game_id' => 'A game id is required',
             'scenenumber' => 'A scene number is required',
             'clientname' => 'A client name is required',
             'file' => 'A file is required'
@@ -59,6 +61,7 @@ class AdController extends Controller
         // Store the data 
         $ad = new Ad;
         $ad->gamename = $request->input('gamename');
+        $ad->game_id = $request->input('game_id');
         $ad->scenenumber = $request->input('scenenumber');
         $ad->clientname  = $request->input('clientname');
         $ad->file = $path;

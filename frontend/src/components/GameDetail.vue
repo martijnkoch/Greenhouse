@@ -31,12 +31,12 @@ description="Description from vue-headful"
             </b-row>
 
             <b-row>
-                <b-col col lg="4" class="link mr-5">
-                    <h4>Client: Mars</h4>
+                <b-col col lg="4" class="link mr-5" v-for="ad in ads" v-bind:key="ad.id">
+                    <h4>Client: {{ad.clientname}}</h4>
                     <div class="d-flex mt-2">
                         <b-col lg="12" class="p-0">
                         <b-input-group size="lg" append="Copy url">
-                            <b-form-input></b-form-input>
+                            <b-form-input :placeholder="'http://localhost:8888/'+ad.file"></b-form-input>
                         </b-input-group>
                         </b-col>
                     </div>
@@ -122,22 +122,33 @@ export default {
   data () {
     return {
         isLoading: false,
-        gameData: 0
+        gameData: 0,
+        ads: null
      }
   },
     methods: {
         fetchGame(){
            return this.$http.get(`http://localhost:8888/api/game/${this.$route.params.id}`)
             .then((response) => {
+                console.log(response)
                 this.gameData = response.data;
             })
             .catch(error => 
                 this.gameData = [{title: 'no game data found'}]);
         }
+
     },
       created: function(){
         this.fetchGame(this.$route.params.id);
-    }
+    },
+      mounted: function() {
+      this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads`)
+        .then(response => {
+            console.log(response)
+            this.ads = response.data})
+        .catch(error => this.ads = [{title: 'no ads found'}]);
+  },
     
   }
 
