@@ -12,23 +12,24 @@ description="Description from vue-headful"
             <SearchbarComponentGrey></SearchbarComponentGrey>
             <h1 >{{gameData[0].name}}</h1>
             <b-img :src="`http://localhost:8888/`+gameData[0].image" fluid alt="Responsive image"></b-img>
-            <b-row>
+            <b-row v-for="scene in sceneOne" v-bind:key="scene.id">
                 <b-col col lg="6">
-                    <h2>1. Ad after the goal</h2>
+                    <h2>{{scene.scene_id}}. {{scene.scene_title}}</h2>
                 </b-col>
                 <b-col col lg="4">
                     <router-link to="/ad-setup">
                         <b-button class="float-right gamedetail-cardbutton text-center">Ad setup</b-button>
                     </router-link>
                 </b-col>
+                <b-row class="pl-3">
+                    <b-col col lg="10">
+                        <h4>Four ads available</h4>
+                        <p>{{scene.description}}</p>
+                    </b-col>
+                </b-row>
             </b-row>
             
-            <b-row>
-                <b-col col lg="10">
-                    <h4>Four ads available</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus arcu purus, et tempus eros egestas sollicitudin. Morbi nisi orci, egestas non semper id, sollicitudin eu felis. Ut porta auctor nisl sit amet mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis enim nisl, aliquam at tempor eget, pharetra et augue. In vitae tortor a eros vehicula pellentesque. Quisque ac ligula non felis pretium ullamcorper. Nulla facilisi. Maecenas aliquet sapien a ullamcorper mollis. Sed vel tellus vestibulum, aliquam augue eu, mollis lacus. Etiam efficitur mollis lacus, a commodo tortor vulputate et. In ut cursus nisl, ut elementum turpis. Cras ac dolor sed ligula viverra scelerisque at id metus. Donec eget turpis quis leo hendrerit cursus at ut lectus. Vivamus ultrices ut urna ut lacinia. Curabitur sagittis mollis nisi in malesuada.</p>
-                </b-col>
-            </b-row>
+  
 
             <b-row>
                 <b-col col lg="4" class="link mr-5" v-for="ad in adsOne" v-bind:key="ad.id">
@@ -93,7 +94,8 @@ export default {
     return {
         isLoading: false,
         gameData: 0,
-        adsOne: null
+        adsOne: null,
+        sceneOne: null
      }
   },
     methods: {
@@ -108,17 +110,25 @@ export default {
         }
 
     },
-      created: function(){
+    created: function(){
         this.fetchGame(this.$route.params.id);
     },
-      mounted: function() {
+    mounted: function() {
       this.$http
         .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-one`)
         .then(response => {
             console.log(response)
             this.adsOne = response.data})
         .catch(error => this.adsOne = [{title: 'no ads found'}]);
-  },
+    },
+    mounted: function() {
+      this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-one`)
+        .then(response => {
+            console.log(response)
+            this.sceneOne = response.data})
+        .catch(error => this.sceneOne = [{title: 'no ads found'}]);
+    },
     
   }
 
