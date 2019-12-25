@@ -145,14 +145,42 @@ class GameController extends Controller
             ], 404);
         }
     }
-    
+
     /**
-     * Show ads for a game with scenenumber 1 
+     * Show scene for a game with scenenumber 1 
      */
     public function showSceneOne($id)
     {
         if (Game::where('id', $id)->exists()) {
             $ad = Game::find($id)->scenes->where('scene_id', 1)->toJson(JSON_PRETTY_PRINT);
+            return response($ad, 200);
+        } else {
+            return response()->json([
+                "message" => "Game not found"
+            ], 404);
+        }
+    }
+    /**
+     * Show scene for a game with scenenumber 2
+     */
+    public function showSceneTwo($id)
+    {
+        if (Game::where('id', $id)->exists()) {
+            $ad = Game::find($id)->scenes->where('scene_id', 2)->toJson(JSON_PRETTY_PRINT);
+            return response($ad, 200);
+        } else {
+            return response()->json([
+                "message" => "Game not found"
+            ], 404);
+        }
+    }
+    /**
+     * Show scene for a game with scenenumber 3 
+     */
+    public function showSceneThree($id)
+    {
+        if (Game::where('id', $id)->exists()) {
+            $ad = Game::find($id)->scenes->where('scene_id', 3)->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
