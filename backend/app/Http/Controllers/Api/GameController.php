@@ -14,7 +14,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        return Game::all();
+        $games = Game::withCount('ads')->orderBy('ads_count', 'desc')->get();
+        return response($games, 200);
     }
 
     /**
@@ -137,6 +138,21 @@ class GameController extends Controller
     {
         if (Game::where('id', $id)->exists()) {
             $ad = Game::find($id)->ads->where('scenenumber', 3)->toJson(JSON_PRETTY_PRINT);
+            return response($ad, 200);
+        } else {
+            return response()->json([
+                "message" => "Game not found"
+            ], 404);
+        }
+    }
+    
+    /**
+     * Show ads for a game with scenenumber 1 
+     */
+    public function showSceneOne($id)
+    {
+        if (Game::where('id', $id)->exists()) {
+            $ad = Game::find($id)->scenes->where('scene_id', 1)->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([

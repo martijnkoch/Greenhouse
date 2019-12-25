@@ -30,8 +30,14 @@ Route::get('/game/{id}', 'Api\GameController@show');
 Route::get('/game/{id}/ads-one', 'Api\GameController@showAdsOne');
 Route::get('/game/{id}/ads-two', 'Api\GameController@showAdsTwo');
 Route::get('/game/{id}/ads-three', 'Api\GameController@showAdsThree');
+Route::get('/game/{id}/scene-one', 'Api\GameController@showSceneOne');
+Route::get('/game/{id}/scene-two', 'Api\GameController@showSceneTwo');
+Route::get('/game/{id}/scene-three', 'Api\GameController@showSceneThree');
 Route::post('/add-game', 'Api\GameController@store');
 Route::delete('/deletegame/{id}', 'Api\GameController@destroy');
 
 //Ad controller 
 Route::post('/post-ad', 'Api\AdController@store');
+
+//Scene controller 
+Route::post('/post-scene', 'Api\SceneController@store');
