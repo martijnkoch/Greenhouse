@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\Storage;
 class GameController extends Controller
 {
     /**
-    * Display all games
+    * Display all games with > 0 ads available
      */
     public function index()
     {
-        $games = Game::withCount('ads')->orderBy('ads_count', 'desc')->get();
+        $games = Game::withCount('ads')
+            ->orderBy('ads_count', 'desc')
+            ->having('ads_count', '>', 0)
+            ->get();
         return response($games, 200);
     }
 
@@ -23,7 +26,10 @@ class GameController extends Controller
      */
     public function mostPopular()
     {
-        $games = Game::withCount('ads')->orderBy('ads_count', 'desc')->take(3)->get();
+        $games = Game::withCount('ads')
+            ->orderBy('ads_count', 'desc')
+            ->take(3)
+            ->get();
         return response($games, 200);
     }
 
@@ -107,7 +113,10 @@ class GameController extends Controller
     public function showAdsOne($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $ad = Game::find($id)->ads->where('scenenumber', 1)->toJson(JSON_PRETTY_PRINT);
+            $ad = Game::find($id)
+                ->ads
+                ->where('scenenumber', 1)
+                ->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
@@ -122,7 +131,10 @@ class GameController extends Controller
     public function showAdsTwo($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $ad = Game::find($id)->ads->where('scenenumber', 2)->toJson(JSON_PRETTY_PRINT);
+            $ad = Game::find($id)
+                ->ads
+                ->where('scenenumber', 2)
+                ->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
@@ -137,7 +149,10 @@ class GameController extends Controller
     public function showAdsThree($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $ad = Game::find($id)->ads->where('scenenumber', 3)->toJson(JSON_PRETTY_PRINT);
+            $ad = Game::find($id)
+                ->ads
+                ->where('scenenumber', 3)
+                ->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
@@ -152,7 +167,9 @@ class GameController extends Controller
     public function showSceneOne($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $ad = Game::find($id)->scenes->where('scene_id', 1)->toJson(JSON_PRETTY_PRINT);
+            $ad = Game::find($id)
+                ->scenes->where('scene_id', 1)
+                ->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
@@ -166,7 +183,10 @@ class GameController extends Controller
     public function showSceneTwo($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $ad = Game::find($id)->scenes->where('scene_id', 2)->toJson(JSON_PRETTY_PRINT);
+            $ad = Game::find($id)
+                ->scenes
+                ->where('scene_id', 2)
+                ->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
@@ -180,7 +200,10 @@ class GameController extends Controller
     public function showSceneThree($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $ad = Game::find($id)->scenes->where('scene_id', 3)->toJson(JSON_PRETTY_PRINT);
+            $ad = Game::find($id)
+                ->scenes
+                ->where('scene_id', 3)
+                ->toJson(JSON_PRETTY_PRINT);
             return response($ad, 200);
         } else {
             return response()->json([
