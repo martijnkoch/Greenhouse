@@ -38,7 +38,7 @@
 	export default {
 		methods: {
 			login(){
-				 this.$http.post('http://localhost:81/api/login',{
+				 this.$http.post('http://localhost:8888/api/login',{
 					username: this.username,
 					password: this.password
 				})

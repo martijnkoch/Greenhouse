@@ -28,8 +28,6 @@ description="Description from vue-headful"
                     </b-col>
                 </b-row>
             </b-row>
-            
-  
 
             <b-row>
                 <b-col col lg="4" class="link mr-5" v-for="ad in adsOne" v-bind:key="ad.id">
@@ -114,22 +112,23 @@ export default {
         this.fetchGame(this.$route.params.id);
     },
     mounted: function() {
+       // Get the first scene
+       this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-one`)
+        .then(response => {
+            console.log(response)
+            this.sceneOne = response.data})
+        .catch(error => this.sceneOne = [{title: 'no scene found'}]);
+
+      // Get the First ads 
       this.$http
         .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-one`)
         .then(response => {
             console.log(response)
             this.adsOne = response.data})
         .catch(error => this.adsOne = [{title: 'no ads found'}]);
+
     },
-    mounted: function() {
-      this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-one`)
-        .then(response => {
-            console.log(response)
-            this.sceneOne = response.data})
-        .catch(error => this.sceneOne = [{title: 'no ads found'}]);
-    },
-    
   }
 
 </script>
