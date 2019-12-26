@@ -41,36 +41,37 @@ description="Description from vue-headful"
                     </div>
                 </b-col>
             </b-row>
-
-            <b-row>
-                <b-col col lg="4">
-                    <h2>2. Ad after a match</h2>
+            <b-row v-for="scene in sceneTwo" v-bind:key="scene.id">
+                <b-col col lg="6">
+                    <h2>{{scene.scene_id}}. {{scene.scene_title}}</h2>
                 </b-col>
                 <b-col col lg="4">
                     <router-link to="/ad-setup">
                         <b-button class="float-right gamedetail-cardbutton text-center">Ad setup</b-button>
                     </router-link>
                 </b-col>
+                <b-row class="pl-3">
+                    <b-col col lg="10">
+                        <h4>Four ads available</h4>
+                        <p>{{scene.description}}</p>
+                    </b-col>
+                </b-row>
             </b-row>
 
             <b-row>
-                <b-col col lg="8">
-                    <h4>One ad available</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus arcu purus, et tempus eros egestas sollicitudin. Morbi nisi orci, egestas non semper id, sollicitudin eu felis. Ut porta auctor nisl sit amet mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis enim nisl, aliquam at tempor eget, pharetra et augue. In vitae tortor a eros vehicula pellentesque. Quisque ac ligula non felis pretium ullamcorper. Nulla facilisi. Maecenas aliquet sapien a ullamcorper mollis. Sed vel tellus vestibulum, aliquam augue eu, mollis lacus. Etiam efficitur mollis lacus, a commodo tortor vulputate et. In ut cursus nisl, ut elementum turpis. Cras ac dolor sed ligula viverra scelerisque at id metus. Donec eget turpis quis leo hendrerit cursus at ut lectus. Vivamus ultrices ut urna ut lacinia. Curabitur sagittis mollis nisi in malesuada.</p>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col col lg="4" class="link mr-5">
-                    <h4>Client: Mars</h4>
+                <b-col col lg="4" class="link mr-5" v-for="ad in adsTwo" v-bind:key="ad.id">
+                    <h4>Client: {{ad.clientname}}</h4>
                     <div class="d-flex mt-2">
                         <b-col lg="12" class="p-0">
                         <b-input-group size="lg" append="Copy url">
-                            <b-form-input></b-form-input>
+                            <b-form-input :value="'http://localhost:8888/'+ad.file"></b-form-input>
                         </b-input-group>
                         </b-col>
                     </div>
                 </b-col>
             </b-row>
+
+
         </b-col>
     </b-row>
 </div>
@@ -93,7 +94,11 @@ export default {
         isLoading: false,
         gameData: 0,
         adsOne: null,
-        sceneOne: null
+        sceneOne: null,
+        adsTwo: null,
+        sceneTwo: null,
+        adsThree: null,
+        sceneThree: null
      }
   },
     methods: {
@@ -128,6 +133,37 @@ export default {
             this.adsOne = response.data})
         .catch(error => this.adsOne = [{title: 'no ads found'}]);
 
+       // Get the second scene
+       this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-two`)
+        .then(response => {
+            console.log(response)
+            this.sceneTwo = response.data})
+        .catch(error => this.sceneTwo = [{title: 'no scene found'}]);
+
+      // Get the Second ads 
+      this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-two`)
+        .then(response => {
+            console.log(response)
+            this.adsTwo = response.data})
+        .catch(error => this.adsTwo = [{title: 'no ads found'}]);
+
+       // Get the third scene
+       this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-three`)
+        .then(response => {
+            console.log(response)
+            this.sceneThree = response.data})
+        .catch(error => this.sceneThree = [{title: 'no scene found'}]);
+
+      // Get the third ads 
+      this.$http
+        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-three`)
+        .then(response => {
+            console.log(response)
+            this.adsThree = response.data})
+        .catch(error => this.adsThree = [{title: 'no ads found'}]);
     },
   }
 
