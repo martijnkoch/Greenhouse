@@ -28,6 +28,7 @@ class GameController extends Controller
     {
         $games = Game::withCount('ads')
             ->orderBy('ads_count', 'desc')
+            ->having('ads_count', '>', 0)
             ->take(3)
             ->get();
         return response($games, 200);
@@ -98,7 +99,9 @@ class GameController extends Controller
     public function show($id)
     {
         if (Game::where('id', $id)->exists()) {
-            $game = Game::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+            $game = Game::where('id', $id)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
             return response($game, 200);
           } else {
             return response()->json([

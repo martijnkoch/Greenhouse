@@ -22,12 +22,13 @@
                     >
                         <div class="row card-content">
                             <div class="lg-6">
-                            <b-card-text>{{game.ads_count}} ads available</b-card-text>
+                            <b-card-text v-if="game.ads_count > 1">{{game.ads_count}} ads available</b-card-text>
+                            <b-card-text v-else>{{game.ads_count}} ad available</b-card-text>
                             </div>
                             <div class="lg-6">
                             <router-link v-bind:to="'/game/'+game.id">
-                                <b-button class="float-right homepage-cardbutton text-center">See ads</b-button>
-                            </router-link>
+                                <b-button class="float-right homepage-cardbutton text-center" v-if="game.ads_count > 1">See ads</b-button>
+                                <b-button class="float-right homepage-cardbutton text-center" v-else>See ad</b-button>                            </router-link>
                             </div>
                         </div>
                     </b-card>
