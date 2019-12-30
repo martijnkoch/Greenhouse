@@ -27,6 +27,9 @@ class SceneController extends Controller
             'description' => 'A game description is required'
         ];
 
+        //Validate the data
+        $validator = $this->validate($request, $rules, $messages);
+        
         // Store the data 
         $scene = new scene;
         $scene->scene_id = $request->input('scene_id');
