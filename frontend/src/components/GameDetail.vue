@@ -103,7 +103,7 @@ export default {
   },
     methods: {
         fetchGame(){
-           return this.$http.get(`http://localhost:8888/api/game/${this.$route.params.id}`)
+           return this.$http.get(`http://localhost:8888/api/games/${this.$route.params.id}`)
             .then((response) => {
                 console.log(response)
                 this.gameData = response.data;
@@ -119,7 +119,7 @@ export default {
     mounted: function() {
        // Get the first scene
        this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-one`)
+        .get(`http://localhost:8888/api/games/${this.$route.params.id}/scene-one`)
         .then(response => {
             console.log(response)
             this.sceneOne = response.data})
@@ -127,7 +127,7 @@ export default {
 
       // Get the First ads 
       this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-one`)
+        .get(`http://localhost:8888/api/games/${this.$route.params.id}/ads-one`)
         .then(response => {
             console.log(response)
             this.adsOne = response.data})
@@ -135,7 +135,7 @@ export default {
 
        // Get the second scene
        this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-two`)
+        .get(`http://localhost:8888/api/games/${this.$route.params.id}/scene-two`)
         .then(response => {
             console.log(response)
             this.sceneTwo = response.data})
@@ -143,7 +143,7 @@ export default {
 
       // Get the Second ads 
       this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-two`)
+        .get(`http://localhost:8888/api/games/${this.$route.params.id}/ads-two`)
         .then(response => {
             console.log(response)
             this.adsTwo = response.data})
@@ -151,7 +151,7 @@ export default {
 
        // Get the third scene
        this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/scene-three`)
+        .get(`http://localhost:8888/api/games/${this.$route.params.id}/scene-three`)
         .then(response => {
             console.log(response)
             this.sceneThree = response.data})
@@ -159,7 +159,7 @@ export default {
 
       // Get the third ads 
       this.$http
-        .get(`http://localhost:8888/api/game/${this.$route.params.id}/ads-three`)
+        .get(`http://localhost:8888/api/games/${this.$route.params.id}/ads-three`)
         .then(response => {
             console.log(response)
             this.adsThree = response.data})

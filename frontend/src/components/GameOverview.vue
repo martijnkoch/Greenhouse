@@ -1,14 +1,14 @@
 <template>
 <div class="wrapper">
 <vue-headful
-    title="Dashboard"
+    title="Game overview"
     description="Description from vue-headful"
 />
 <SidebarComponent></SidebarComponent>
 <div class="content container-fluid">
 <SearchbarComponentGrey></SearchbarComponentGrey>
 
-    <div class="top-row-gameoverview">
+    <div class="top-row-gameoverview mh-100">
         <h1>Games</h1>
         <b-row>
             <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" v-for="game in games" v-bind:key="game.id">
@@ -79,6 +79,7 @@ export default {
     background-color: $white;
     border-radius: 0px 0px 0px 50px;
     padding-left: 50px;
+    min-height: 84%;
 }
 </style>
 

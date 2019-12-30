@@ -26,7 +26,7 @@
                             <b-card-text v-else>{{game.ads_count}} ad available</b-card-text>
                             </div>
                             <div class="lg-6">
-                            <router-link v-bind:to="'/game/'+game.id">
+                            <router-link v-bind:to="'/games/'+game.id">
                                 <b-button class="float-right homepage-cardbutton text-center" v-if="game.ads_count > 1">See ads</b-button>
                                 <b-button class="float-right homepage-cardbutton text-center" v-else>See ad</b-button>
                             </router-link>
@@ -43,7 +43,7 @@
             <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
                 <b-card
                 title="OBS Guide"
-                img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
+                :img-src="require('@/assets/img/obs.jpg')"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
@@ -51,7 +51,7 @@
                 >
                     <div class="row card-content">
                         <div class="offset-lg-4 lg-6 guide-button">
-                            <router-link to="/setup-guide">
+                            <router-link to="/obs">
                                 <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
                             </router-link>
                         </div>
@@ -61,7 +61,7 @@
             <b-col lg="4" md="6" sm="12" class="mt-5 pb-5" >
                 <b-card
                 title="Touchportal Guide"
-                img-src="https://i.ytimg.com/vi/S5q_vps0R-M/maxresdefault.jpg"
+                :img-src="require('@/assets/img/touchportal.jpg')"
                 img-alt="Image"
                 img-top
                 style="max-width: 20rem;"
@@ -69,7 +69,7 @@
                 >
                     <div class="row card-content">
                         <div class="offset-lg-4 lg-6 guide-button">
-                            <router-link to="/setup-guide">
+                            <router-link to="/touchportal">
                                 <b-button class="float-right homepage-cardbutton text-center">See guide</b-button>
                             </router-link>
                         </div>
@@ -95,12 +95,12 @@ export default {
   },
   methods: {
     singleGame (id) {
-      this.$router.push('/game/' + id)
+      this.$router.push('/games/' + id)
     }
   },
   mounted: function() {
       this.$http
-        .get('http://localhost:8888/api/mostpopular')
+        .get('http://localhost:8888/api/games/mostpopular')
         .then(response => {
             console.log(response)
             this.games = response.data})
@@ -126,7 +126,7 @@ export default {
  h1 {
      color: $gh-purple;
      font-weight: 700 !important;
-     font-size: 30pt !important;
+     font-size: 25pt !important;
  }
 
  .default-card {
