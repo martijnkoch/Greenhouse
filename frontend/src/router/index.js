@@ -5,7 +5,10 @@ import GameOverview from '@/components/GameOverview'
 import GameDetail from '@/components/GameDetail'
 import AdSetup from '@/components/AdSetup'
 import SetupGuide from '@/components/SetupGuide'
+import SetupGuides from '@/components/SetupGuides'
 import Profile from '@/components/Profile'
+import Touchportal from '@/components/Touchportal'
+import Obs from '@/components/Obs'
 import Login from '@/components/Login'
 
 Vue.use(Router)
@@ -34,7 +37,7 @@ export default new Router({
       component: Profile
     },
     {
-      path: '/game/:id',
+      path: '/games/:id',
       name: 'GameDetail',
       component: GameDetail
     },
@@ -48,5 +51,20 @@ export default new Router({
       name: 'SetupGuide',
       component: SetupGuide
     },
+    {
+      path: '/setup-guides',
+      name: 'SetupGuides',
+      component: SetupGuides
+    },
+    {
+      path: '/touchportal',
+      name: 'Touchportal',
+      component: Touchportal
+    },
+    {
+      path: '/obs',
+      name: 'Obs',
+      component: Obs
+    }
   ]
 })
