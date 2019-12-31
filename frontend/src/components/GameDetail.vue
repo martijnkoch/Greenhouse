@@ -111,7 +111,6 @@ export default {
             .catch(error => 
                 this.gameData = [{title: 'no game data found'}]);
         }
-
     },
     created: function(){
         this.fetchGame(this.$route.params.id);
